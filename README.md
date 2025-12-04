@@ -6,7 +6,6 @@ Bu küçük Python aracı, PDF dosyalarında e-imza olup olmadığını kontrol 
 
 1. Repoyu klonla:
    git clone https://github.com/EngincanErgunGG/ESIGN-CONTROLLER-PDF.git
-   cd ESIGN-CONTROLLER-PDF
 
 2. Bağımlılıkları yükle:
    pip install -r requirements.txt
@@ -14,8 +13,11 @@ Bu küçük Python aracı, PDF dosyalarında e-imza olup olmadığını kontrol 
 
 ## Kullanım
 
-   python esign_controller.py
-
+   Terminal üzerinde projeyi klonladığınız klasörde;
+```
+cd ESIGN-CONTROLLER-PDF
+python esign_controller.py
+```
 Ardından dosya yolunu girmeniz istenir. Program PDF dosyasında e-imza olup olmadığını kontrol eder.
 
 ## Örnek Çıktı
