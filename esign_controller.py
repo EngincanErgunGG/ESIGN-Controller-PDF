@@ -1,7 +1,7 @@
-import time
-
 from PyPDF2 import PdfReader
 from PyPDF2.errors import PdfReadError
+
+print("Programı sonlandırmak için CTRL+C tuşlarına basınız.")
 
 def check_signature(pdf_path):
     try:
@@ -10,21 +10,27 @@ def check_signature(pdf_path):
             acroform = reader.trailer["/Root"]["/AcroForm"]
             if "/SigFlags" in acroform:
                 print("Bu PDF dosyasında e-imza var.")
-                time.sleep(1)
+                main()
                 return
         print("Bu PDF dosyasında e-imza bulunamadı.")
-        return
+        main()
     except FileNotFoundError:
         print("Dosya bulunamadı!")
+        main()
     except PdfReadError:
         print("PDF dosyası okunurken bir sorun oluştu!")
+        main()
+    except KeyboardInterrupt:
+        print("Program sonlandırıldı. Pencere kapatılıyor..")
 
 def main():
-    dosyaYol = input("Dosya yolu giriniz: ")
-    if dosyaYol == "":
-        print("Geçersiz dosya yolu girdiniz!")
-        main()
-    else:
-        check_signature(dosyaYol)
-
+    try:
+        dosyaYol = input("Dosya yolu giriniz: ")
+        if dosyaYol == "":
+            print("Geçersiz dosya yolu girdiniz!")
+            main()
+        else:
+            check_signature(dosyaYol)
+    except KeyboardInterrupt:
+        print("Program sonlandırıldı. Pencere kapatılıyor.")
 main()
